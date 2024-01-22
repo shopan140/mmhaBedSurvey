@@ -17,10 +17,11 @@ getServiceProviderName <- function(spNameText, pattern = "[()]", keep = 1){
 }
 
 
-getServiceProviderBedNumber <- function(spNameText, pattern = "\\d+"){
+getServiceProviderBedNumber <- function(spNameText, returnElement =1, pattern = "\\d+"){
   spNameText <- trimws(spNameText)
   output <- stringr::str_extract_all(spNameText, "\\d+")
-  output
+  if (length(output[[returnElement]]) > 0 ) return (output[[returnElement]])
+  else return(NA)
 }
 
 

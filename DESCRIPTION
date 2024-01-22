@@ -16,5 +16,6 @@ Imports:
     dplyr,
     readxl,
     writexl,
-    stringr
+    stringr,
+    tidyr
 RoxygenNote: 7.2.3

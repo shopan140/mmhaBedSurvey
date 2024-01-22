@@ -113,9 +113,47 @@ addSvcTypeColumn <- function(dfList, colName = svcType){
 }
 
 
-isAllna <- function(vec, checkFor = NA){
+isAllna <- function(vec){
   if(sum(!is.na(vec))>0){
     return (FALSE)
   }
   return (TRUE)
 }
+
+
+getQuarterList <- function(){
+  dd <- timeSeries
+
+  dd
+}
+
+format_quarter <- function(text) {
+  # Extract the year
+  year <- regmatches(text, regexpr("\\b(?:2021|2022|2023|2024)\\b", text, perl = TRUE))
+
+  # Extract the start and end months
+  months <- regmatches(text, regexpr("\\b(?:January|February|March|April|May|June|July|August|September|October|November|December)\\b", text, perl = TRUE))
+  start_month <- months[1]
+  end_month <- months[2]
+
+  # Format the quarter range
+  quarter_range <- paste(start_month, end_month, sep = "-")
+
+  # Combine quarter number and range
+  formatted_quarter <- paste(quarter_range, year, sep = " ")
+
+  return(formatted_quarter)
+}
+
+# # Example usage
+# text1 <- 'Q1: April 1, 2023 to June 30, 2023'
+# text2 <- 'Q2: July 1, 2023 to September 30, 2023'
+#
+# formatted_quarter1 <- format_quarter(text1)
+# formatted_quarter2 <- format_quarter(text2)
+#
+# print(formatted_quarter1)
+# print(formatted_quarter2)
+#
+#
+# isExist("2023", text1)
